@@ -47,3 +47,19 @@ build
 docker/db/*
 /.gitattributes
 
+
+
+#extras
+/web/sites/*
+!/web/sites/default/
+!/web/sites/example.sites.php
+
+/.idea/
+/.vscode/
+*.iml
+*.code-workspace
+
+*.log
+
+*.css.map
+*.css.map.map
