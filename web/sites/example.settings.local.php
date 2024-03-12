@@ -34,8 +34,7 @@
 /**
  * Enable local development services.
  */
-$settings['container_yamls'][] =
-    DRUPAL_ROOT . '/sites/development.services.yml';
+$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
 /**
  * Show all error messages, with backtrace information.
@@ -48,8 +47,8 @@ $config['system.logging']['error_level'] = 'verbose';
 /**
  * Disable CSS and JS aggregation.
  */
-$config['system.performance']['css']['preprocess'] = false;
-$config['system.performance']['js']['preprocess'] = false;
+$config['system.performance']['css']['preprocess'] = FALSE;
+$config['system.performance']['js']['preprocess'] = FALSE;
 
 /**
  * Disable the render cache.
@@ -113,7 +112,7 @@ $config['system.performance']['js']['preprocess'] = false;
  * be gained by generating a query string from rebuild_token_calculator.sh and
  * using these parameters in a request to rebuild.php.
  */
-$settings['rebuild_access'] = true;
+$settings['rebuild_access'] = TRUE;
 
 /**
  * Skip file system permissions hardening.
@@ -125,7 +124,7 @@ $settings['rebuild_access'] = true;
  * user pulling in the changes won't have permissions to modify files in the
  * directory.
  */
-$settings['skip_permissions_hardening'] = true;
+$settings['skip_permissions_hardening'] = TRUE;
 
 /**
  * Exclude modules from configuration synchronization.
