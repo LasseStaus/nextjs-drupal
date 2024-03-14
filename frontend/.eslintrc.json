@@ -1,4 +1,35 @@
 {
-  "extends": "next",
-  "root": true
+  "extends": ["next", "prettier"],
+  "root": true,
+  "rules": {
+    "no-unused-vars": [
+      "warn",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
+    ],
+    "prefer-const": "error",
+    "no-var": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
+    ],
+    "import/no-unresolved": "error",
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/default": "error",
+    "import/export": "error",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      { "selector": "typeLike", "format": ["PascalCase"] },
+      { "selector": "variable", "format": ["camelCase", "UPPER_CASE"] }
+    ],
+    "arrow-body-style": ["warn", "as-needed"],
+    "prefer-arrow-callback": "warn"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"]
 }
