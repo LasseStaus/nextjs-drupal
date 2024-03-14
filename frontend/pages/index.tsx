@@ -1,9 +1,9 @@
-import { Layout } from "components/layout";
-import { NodeArticleTeaser } from "components/node--article--teaser";
-import { drupal } from "lib/drupal";
-import { GetStaticPropsResult } from "next";
-import { DrupalNode } from "next-drupal";
-import Head from "next/head";
+import { Layout } from 'components/layout';
+import { NodeArticleTeaser } from 'components/node--article--teaser';
+import { drupal } from 'lib/drupal';
+import { GetStaticPropsResult } from 'next';
+import { DrupalNode } from 'next-drupal';
+import Head from 'next/head';
 
 interface IndexPageProps {
   nodes: DrupalNode[];
@@ -40,14 +40,14 @@ export async function getStaticProps(
   context
 ): Promise<GetStaticPropsResult<IndexPageProps>> {
   const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
-    "node--article",
+    'node--article',
     context,
     {
       params: {
-        "filter[status]": 1,
-        "fields[node--article]": "title,path,field_image,uid,created",
-        include: "field_image,uid",
-        sort: "-created",
+        'filter[status]': 1,
+        'fields[node--article]': 'title,path,field_image,uid,created',
+        include: 'field_image,uid',
+        sort: '-created',
       },
     }
   );

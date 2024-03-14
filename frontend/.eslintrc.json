@@ -1,16 +1,26 @@
 {
   "extends": ["next", "prettier"],
   "root": true,
+  "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "no-unused-vars": [
       "warn",
-      { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": true
+      }
     ],
     "prefer-const": "error",
     "no-var": "error",
     "@typescript-eslint/no-unused-vars": [
       "warn",
-      { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": true
+      }
     ],
     "import/no-unresolved": "error",
     "import/named": "error",
@@ -19,8 +29,14 @@
     "import/export": "error",
     "@typescript-eslint/naming-convention": [
       "error",
-      { "selector": "typeLike", "format": ["PascalCase"] },
-      { "selector": "variable", "format": ["camelCase", "UPPER_CASE"] }
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE"]
+      }
     ],
     "arrow-body-style": ["warn", "as-needed"],
     "prefer-arrow-callback": "warn"
@@ -30,6 +46,5 @@
       "typescript": {}
     }
   },
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"]
+  "parser": "@typescript-eslint/parser"
 }
