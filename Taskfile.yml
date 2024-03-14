@@ -1,0 +1,110 @@
+version: "3"
+
+vars:
+  GREETING: Hello, World!
+  FRONTEND_DIR: frontend
+  INITIAL_DB_SRC: dump/initial.sql.gz
+
+tasks:
+  default:
+    cmds:
+      - task --list-all
+    silent: true
+
+  # DDEV/Drupal tasks
+  initial-db:
+    desc: Import initial database
+    cmds:
+      - echo "Importing initial db..."
+      - ddev import-db --src={{.INITIAL_DB_SRC}}
+    silent: true
+
+  composer-install:
+    desc: Install composer dependencies
+    cmds:
+      - echo "Running composer install..."
+      - ddev composer install
+    silent: true
+
+  up:
+    desc: Starting both backend and frontend projects
+    cmds:
+      - echo "Starting backend project..."
+      - ddev start
+      - echo "Starting frontend project..."
+      - cd {{.FRONTEND_DIR}} && yarn dev
+    silent: true
+
+  down:
+    desc: Stopping both backend and frontend projects
+    cmds:
+      - echo "Stopping backend project..."
+      - ddev stop
+    silent: true
+
+  cr:
+    desc: Clear the Drupal cache
+    cmds:
+      - ddev drush cr
+    silent: true
+
+  ###### Frontend Tasks ######
+  yarn-install:
+    desc: Install all frontend dependencies with Yarn
+    cmds:
+      - yarn install
+    dir: "{{.FRONTEND_DIR}}"
+    silent: true
+
+  frontend-clean:
+    desc: Clean up frontend build artifacts and node modules
+    cmds:
+      - rm -rf .next
+      - rm -rf node_modules
+    dir: "{{.FRONTEND_DIR}}"
+    silent: true
+
+  prettier-check:
+    desc: Check if prettier is happy with the code
+    cmds:
+      - yarn prettier --check .
+    dir: "{{.FRONTEND_DIR}}"
+    silent: true
+
+  prettier-write:
+    desc: Run prettier and write the changes
+    cmds:
+      - yarn prettier --write .
+    dir: "{{.FRONTEND_DIR}}"
+    silent: true
+
+  lint:
+    desc: Run linters on frontend code
+    cmds:
+      - yarn lint:js
+      - yarn lint:scss
+      - yarn lint:markdown
+    dir: "{{.FRONTEND_DIR}}"
+    silent: true
+
+  reset:
+    desc: Reset both frontend and backend environments, re-imports the initial database, and reinstalls dependencies
+    cmds:
+      #  - task: initial-db
+      - task: composer-install
+      - task: frontend-clean
+      - task: yarn-install
+      - echo "Resetting and starting backend..."
+      - ddev start
+      - echo "Resetting and starting frontend..."
+      - cd {{.FRONTEND_DIR}} && yarn dev
+    silent: true
+
+  dev-start:
+    desc: Start development environment for both frontend and backend
+    cmds:
+      - task: up
+    silent: true
+
+  dev-stop:
+    desc: Stop development environment for both frontend and backend
