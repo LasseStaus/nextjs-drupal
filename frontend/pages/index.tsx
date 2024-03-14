@@ -1,13 +1,12 @@
-import Head from "next/head"
-import { GetStaticPropsResult } from "next"
-import { DrupalNode } from "next-drupal"
-
-import { drupal } from "lib/drupal"
-import { Layout } from "components/layout"
-import { NodeArticleTeaser } from "components/node--article--teaser"
+import { Layout } from "components/layout";
+import { NodeArticleTeaser } from "components/node--article--teaser";
+import { drupal } from "lib/drupal";
+import { GetStaticPropsResult } from "next";
+import { DrupalNode } from "next-drupal";
+import Head from "next/head";
 
 interface IndexPageProps {
-  nodes: DrupalNode[]
+  nodes: DrupalNode[];
 }
 
 export default function IndexPage({ nodes }: IndexPageProps) {
@@ -34,7 +33,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
         )}
       </div>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps(
@@ -51,11 +50,11 @@ export async function getStaticProps(
         sort: "-created",
       },
     }
-  )
+  );
 
   return {
     props: {
       nodes,
     },
-  }
+  };
 }
