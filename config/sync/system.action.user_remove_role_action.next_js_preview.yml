@@ -1,0 +1,14 @@
+uuid: bb4a4ed5-cd24-44ca-a979-9724be1151e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.next_js_preview
+  module:
+    - user
+id: user_remove_role_action.next_js_preview
+label: 'Remove the Next.js Preview role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: next_js_preview

@@ -1,0 +1,15 @@
+uuid: 404a2f6b-2806-4642-969a-7e12c34e8a02
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - subrequests
+id: next_js_preview
+label: 'Next.js Preview'
+weight: 4
+is_admin: null
+permissions:
+  - 'access user profiles'
+  - 'bypass node access'
+  - 'issue subrequests'

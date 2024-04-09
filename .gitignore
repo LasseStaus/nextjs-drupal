@@ -47,7 +47,7 @@ build
 docker/db/*
 /.gitattributes
 
-
+privatekeys/*
 
 #extras
 /web/sites/*

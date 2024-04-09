@@ -1,0 +1,11 @@
+uuid: 39fa267d-3da5-4e1b-bb43-0258036f093d
+langcode: en
+status: true
+dependencies: {  }
+id: node.article
+site_resolver: site_selector
+configuration:
+  sites:
+    next_js: next_js
+revalidator: ''
+revalidator_configuration: {  }
