@@ -27,18 +27,7 @@
     "import/namespace": "error",
     "import/default": "error",
     "import/export": "error",
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "typeLike",
-        "format": ["PascalCase"]
-      },
-      {
-        "selector": "variable",
-        "format": ["camelCase", "UPPER_CASE"]
-      }
-    ],
-    "arrow-body-style": ["warn", "as-needed"],
+
     "prefer-arrow-callback": "warn"
   },
   "settings": {
