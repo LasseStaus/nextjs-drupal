@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { PreviewAlert } from 'components/preview-alert';
+import ThemeToggler from './themes/themeToggler';
 
 export function Layout({ children }) {
   return (
@@ -20,6 +21,7 @@ export function Layout({ children }) {
             >
               Read the docs
             </Link>
+            <ThemeToggler />
           </div>
         </header>
         <main className="container py-10 mx-auto">{children}</main>

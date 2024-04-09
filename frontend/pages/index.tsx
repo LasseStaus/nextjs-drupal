@@ -1,17 +1,19 @@
-import { Layout } from 'components/layout';
-import { NodeArticleTeaser } from 'components/node--article--teaser';
+import type { ReactElement } from 'react';
+
+import { Layout } from '@/components/layout';
+import { NodeArticleTeaser } from '@/components/node--article--teaser';
 import { drupal } from 'lib/drupal';
-import { GetStaticPropsResult } from 'next';
 import { DrupalNode } from 'next-drupal';
 import Head from 'next/head';
+import type { NextPageWithLayout } from './_app';
 
 interface IndexPageProps {
   nodes: DrupalNode[];
 }
 
-export default function IndexPage({ nodes }: IndexPageProps) {
+const IndexPage: NextPageWithLayout<IndexPageProps> = ({ nodes }) => {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next.js for Drupal</title>
         <meta
@@ -32,13 +34,17 @@ export default function IndexPage({ nodes }: IndexPageProps) {
           <p className="py-4">No nodes found</p>
         )}
       </div>
-    </Layout>
+    </>
   );
-}
+};
+
+IndexPage.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
 
 export async function getStaticProps(
   context
-): Promise<GetStaticPropsResult<IndexPageProps>> {
+): Promise<{ props: IndexPageProps }> {
   const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     'node--article',
     context,
@@ -58,3 +64,5 @@ export async function getStaticProps(
     },
   };
 }
+
+export default IndexPage;
